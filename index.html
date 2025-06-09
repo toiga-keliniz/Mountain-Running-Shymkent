@@ -1,1352 +1,1180 @@
-<!DOCTYPE html>
-<html lang="ru">
+ <!DOCTYPE html>
+
+<html lang="kk">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Mountain Running Shymkent</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #4a6fa5;
-            --secondary: #166088;
-            --accent: #4fc3a1;
-            --dark: #2d3a4a;
-            --light: #f8f9fa;
-            --danger: #e74c3c;
-            --warning: #f39c12;
-            --success: #2ecc71;
-            --transition: all 0.3s ease;
-        }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link rel="stylesheet" href="styles.css">
 
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--accent);
-            color: white;
-            border-radius: 50px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            box-shadow: 0 4px 15px rgba(79, 195, 161, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(79, 195, 161, 0.4);
-            background-color: #3da389;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--accent);
-            color: white;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-            font-size: 2.5rem;
-            color: var(--secondary);
-        }
-
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-            margin: 15px auto;
-            border-radius: 2px;
-        }
-
-        /* Hero Section */
-        #hero {
-            height: 100vh;
-            min-height: 600px;
-            background: linear-gradient(rgba(45, 58, 74, 0.7), rgba(45, 58, 74, 0.7)), 
-                        url('https://avatars.mds.yandex.net/i?id=60e284a6204112a28a069e59eebba4c1_l-5887546-images-thumbs&n=13') no-repeat center center/cover;
-            color: white;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero-content {
-            width: 100%;
-            padding: 0 20px;
-        }
-
-        .hero-logo {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 30px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero-logo img {
-            width: 80%;
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .countdown {
-            margin-top: 50px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .countdown-item {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 15px 25px;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
-            min-width: 100px;
-        }
-
-        .countdown-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .countdown-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            opacity: 0.8;
-        }
-
-        /* About Section */
-        #about {
-            background-color: var(--light);
-        }
-
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .about-details {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .detail-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .detail-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--accent);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-size: 1.2rem;
-        }
-
-        .map-container {
-            margin-top: 40px;
-            height: 400px;
-            background-color: #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .map-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #eee;
-            color: var(--dark);
-            font-weight: 600;
-        }
-
-        /* Goals Section */
-        .goals-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .goal-card {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-        }
-
-        .goal-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .goal-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-        }
-
-        .goal-title {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-
-        /* Distances Section */
-        #distances {
-            background-color: var(--light);
-        }
-
-        .distance-tabs {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .distance-tab {
-            padding: 12px 25px;
-            background: white;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .distance-tab.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .distance-content {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .distance-content.active {
-            display: block;
-        }
-
-        .distance-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .distance-map {
-            flex: 1;
-            min-width: 300px;
-            height: 350px;
-            background-color: #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .distance-details {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .distance-prize {
-            margin-top: 40px;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .prize-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .prize-item {
-            flex: 1;
-            min-width: 200px;
-            text-align: center;
-        }
-
-        .prize-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 15px;
-            background-color: var(--accent);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        /* Documents Section */
-        .documents-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .document-card {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-        }
-
-        .document-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .document-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 15px;
-            background-color: var(--secondary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        /* Organizers Section */
-        #organizers {
-            background-color: var(--light);
-        }
-
-        .organizers-category {
-            margin-bottom: 50px;
-        }
-
-        .category-title {
-            text-align: center;
-            margin-bottom: 30px;
-            color: var(--primary);
-            font-size: 1.5rem;
-        }
-
-        .logos-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-        }
-
-        .logo-item {
-            width: 150px;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .logo-item img {
-            max-width: 100%;
-            max-height: 100%;
-            filter: grayscale(100%);
-            opacity: 0.7;
-            transition: var(--transition);
-        }
-
-        .logo-item:hover img {
-            filter: grayscale(0);
-            opacity: 1;
-        }
-
-        /* Starter Kits Section */
-        .kit-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .kit-map {
-            flex: 1;
-            min-width: 300px;
-            height: 350px;
-            background-color: #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .kit-details {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .kit-items {
-            margin-top: 30px;
-        }
-
-        .kit-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .kit-icon {
-            width: 40px;
-            height: 40px;
-            background-color: var(--accent);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-size: 1rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 50px 0 20px;
-            text-align: center;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .footer-title {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            background-color: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* Navigation */
-        .nav-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        .nav-scrolled {
-            background-color: rgba(45, 58, 74, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            transition: var(--transition);
-        }
-
-        .nav-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        .nav-logo span {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-link {
-            color: white;
-            font-weight: 600;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: var(--transition);
-        }
-
-        .nav-link:hover:after {
-            width: 100%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 80%;
-            max-width: 300px;
-            height: 100vh;
-            background-color: var(--dark);
-            z-index: 1001;
-            transition: var(--transition);
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .close-menu-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .mobile-nav-link {
-            color: white;
-            font-size: 1.1rem;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .backdrop {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: var(--transition);
-        }
-
-        .backdrop.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            section {
-                padding: 60px 0;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .countdown-item {
-                padding: 10px 15px;
-                min-width: 80px;
-            }
-            
-            .countdown-number {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .btn {
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-            
-            .hero-logo {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .countdown {
-                gap: 10px;
-            }
-            
-            .countdown-item {
-                padding: 8px 12px;
-                min-width: 70px;
-            }
-            
-            .countdown-number {
-                font-size: 1.5rem;
-            }
-            
-            .countdown-label {
-                font-size: 0.7rem;
-            }
-        }
-    </style>
 </head>
+
 <body>
-    <!-- Navigation -->
-    <div class="nav-container">
-        <div class="container">
-            <nav>
-                <a href="#" class="nav-logo">Mountain<span>Run</span></a>
-                <div class="nav-links">
-                    <a href="#about" class="nav-link">О марафоне</a>
-                    <a href="#goals" class="nav-link">Наша цель</a>
-                    <a href="#distances" class="nav-link">Дистанции</a>
-                    <a href="#documents" class="nav-link">Документы</a>
-                    <a href="#organizers" class="nav-link">Организаторы</a>
-                    <a href="#starter-kits" class="nav-link">Стартовые пакеты</a>
-                    <a href="#register" class="btn btn-outline">Регистрация</a>
-                </div>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </nav>
-        </div>
-    </div>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu">
-        <div class="mobile-menu-header">
+<div class="nav-container">
+    <div class="container">
+        <nav>
             <a href="#" class="nav-logo">Mountain<span>Run</span></a>
-            <button class="close-menu-btn">
-                <i class="fas fa-times"></i>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">Марафон туралы</a>
+                <a href="#goals" class="nav-link">Біздің мақсатымыз</a>
+                <a href="#distances" class="nav-link">Қашықтықтар</a>
+                <a href="#documents" class="nav-link">Құжаттар</a>
+                <a href="#organizers" class="nav-link">Ұйымдастырушылар</a>
+                <a href="#starter-kits" class="nav-link">Бастапқы пакеттер</a>
+                <a href="#register" class="btn btn-outline">Тіркелу</a>
+                <a href="ru.html" class="lang-switch">RU</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
             </button>
-        </div>
-        <a href="#about" class="mobile-nav-link">О марафоне</a>
-        <a href="#goals" class="mobile-nav-link">Наша цель</a>
-        <a href="#distances" class="mobile-nav-link">Дистанции</a>
-        <a href="#documents" class="mobile-nav-link">Документы</a>
-        <a href="#organizers" class="mobile-nav-link">Организаторы</a>
-        <a href="#starter-kits" class="mobile-nav-link">Стартовые пакеты</a>
-        <a href="#register" class="btn">Регистрация</a>
+        </nav>
     </div>
-    <div class="backdrop"></div>
+</div>
 
-    <!-- Hero Section -->
+<div class="mobile-menu">
+    <div class="mobile-menu-header">
+        <a href="#" class="nav-logo">Mountain<span>Run</span></a>
+        <button class="close-menu-btn">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <a href="#about" class="mobile-nav-link">Марафон туралы</a>
+    <a href="#goals" class="mobile-nav-link">Біздің мақсатымыз</a>
+    <a href="#distances" class="mobile-nav-link">Қашықтықтар</a>
+    <a href="#documents" class="mobile-nav-link">Құжаттар</a>
+    <a href="#organizers" class="mobile-nav-link">Ұйымдастырушылар</a>
+    <a href="#starter-kits" class="mobile-nav-link">Бастапқы пакеттер</a>
+    <a href="#register" class="btn">Тіркелу</a>
+    <a href="ru.html" class="mobile-nav-link lang-switch">RU</a>
+</div>
+<div class="backdrop"></div>
+
+
+
+
     <section id="hero">
+
         <div class="hero-content">
+
             <div class="container">
+
                 <div class="hero-logo">
+
                     <img src="https://s.iimg.su/s/02/YAVNYxPtM4rzz3zkHO29zJLBLDXMhCmIUTBOiDZn.png" alt="Mountain Running Shymkent">
+
                 </div>
-                <h1 class="hero-title">Mountain Running Shymkent</h1>
-                <p class="hero-subtitle">Прими участие в самом захватывающем горном марафоне года! Преодолей себя и насладись потрясающими видами гор Шымкента.</p>
-                <a href="#register" class="btn">Зарегистрироваться</a>
+
+                <h1 class="hero-title">Mountain Running Shymkent 2025</h1>
+
+                <p class="hero-subtitle">Жылдың ең керемет тау марафонына қатыс! Өзіңді сынап, Шымкент тауларының әдемі көріністеріне тамсан.</p>
+
+                <a href="#register" class="btn">Тіркелу</a>
+
                 
+
                 <div class="countdown">
+
                     <div class="countdown-item">
+
                         <div class="countdown-number" id="days">00</div>
-                        <div class="countdown-label">Дней</div>
+
+                        <div class="countdown-label">Күн</div>
+
                     </div>
+
                     <div class="countdown-item">
+
                         <div class="countdown-number" id="hours">00</div>
-                        <div class="countdown-label">Часов</div>
+
+                        <div class="countdown-label">Сағат</div>
+
                     </div>
+
                     <div class="countdown-item">
+
                         <div class="countdown-number" id="minutes">00</div>
+
                         <div class="countdown-label">Минут</div>
+
                     </div>
+
                     <div class="countdown-item">
+
                         <div class="countdown-number" id="seconds">00</div>
+
                         <div class="countdown-label">Секунд</div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- About Section -->
+
+
     <section id="about">
+
         <div class="container">
-            <h2 class="section-title">О марафоне</h2>
+
+            <h2 class="section-title">Марафон туралы</h2>
+
             <div class="about-content">
+
                 <div class="about-text">
-                    <p>Mountain Running Shymkent - это уникальное спортивное событие, сочетающее в себе дух соревнования и любовь к природе. Наш марафон создан для тех, кто хочет проверить свои силы, насладиться прекрасными горными пейзажами и стать частью дружного сообщества бегунов.</p>
-                    <p>Марафон подходит как для профессиональных спортсменов, так и для любителей, которые хотят бросить себе вызов. Мы предлагаем несколько дистанций на выбор, чтобы каждый мог найти подходящий уровень сложности.</p>
+
+                    <p>Mountain Running Shymkent - бұл бәсекелестік рухы мен табиғатқа деген сүйіспеншілікті біріктіретін бірегей спорттық іс-шара. Біздің марафон өз күшін сынап, таудың әсем көріністерінен ләззат алғысы келетіндерге және жүгірушілердің тату қауымдастығының бір бөлігі болғысы келетіндерге арналған.</p>
+
+                    <p>Марафон кәсіби спортшыларға да, өздерін сынағысы келетін әуесқойларға да қолайлы. Біз әркім өзіне сәйкес келетін қиындық деңгейін таба алатындай бірнеше қашықтықты ұсынамыз.</p>
+
                 </div>
+
                 <div class="about-details">
+
                     <div class="detail-item">
+
                         <div class="detail-icon">
+
                             <i class="fas fa-calendar-alt"></i>
+
                         </div>
+
                         <div>
-                            <h3>Дата проведения</h3>
-                            <p>15 сентября 2023 года</p>
+
+                            <h3>Өткізу күні</h3>
+
+                            <p>2025 жылғы 10 қазан <br>Басталу уақыты: таңғы сағат 08:30-де <br>Жиналу уақыты: сағат 07:30-ге дейін
+
+                            </p>
+
                         </div>
+
                     </div>
+
                     <div class="detail-item">
+
                         <div class="detail-icon">
+
                             <i class="fas fa-map-marker-alt"></i>
+
                         </div>
+
                         <div>
-                            <h3>Место проведения</h3>
-                            <p>Горный массив Шымкент, Казахстан</p>
+
+                            <h3>Өткізу орны</h3>
+
+                            <p>Төлеби ауданы, Қасқасу ауылы. Шымкент қаласынан 20 км қашықтықта
+
+</p>
+
                         </div>
+
                     </div>
+
                     <div class="detail-item">
+
                         <div class="detail-icon">
+
                             <i class="fas fa-running"></i>
+
                         </div>
+
                         <div>
-                            <h3>Участники</h3>
-                            <p>От 18 лет с медицинским допуском</p>
+
+                            <h3>Қатысушылар</h3>
+
+                            <p>16 жастан жоғары барлық жүгірушілер</p>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
             
+
             <div class="map-container">
+
                 <div class="map-placeholder">
+
                     [Карта местности будет здесь]
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- Goals Section -->
+
+
     <section id="goals">
+
         <div class="container">
-            <h2 class="section-title">Наша цель</h2>
+
+            <h2 class="section-title">Біздің мақсат</h2>
+
             <div class="goals-grid">
+
                 <div class="goal-card">
+
                     <div class="goal-icon">
+
                         <i class="fas fa-heartbeat"></i>
+
                     </div>
-                    <h3 class="goal-title">Популяризация спорта</h3>
-                    <p>Мы стремимся сделать спорт доступным для всех и показать, что горный бег - это не только сложно, но и невероятно увлекательно.</p>
+
+                    <h3 class="goal-title">Қоғам денсаулығын нығайту</h3>
+
+                    <p>
+
+Қозғалыс белсенділігін арттыру арқылы тұрғындардың физикалық және психологиялық денсаулығын жақсарту.
+
+</p>
+
                 </div>
+
+            
+
                 <div class="goal-card">
+
                     <div class="goal-icon">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                    <h3 class="goal-title">Поддержка благотворительности</h3>
-                    <p>Часть средств от марафона направляется на поддержку детских спортивных школ в регионе.</p>
-                </div>
-                <div class="goal-card">
-                    <div class="goal-icon">
+
                         <i class="fas fa-leaf"></i>
+
                     </div>
-                    <h3 class="goal-title">Забота об экологии</h3>
-                    <p>Мы проводим марафон с минимальным воздействием на природу и организуем уборку территории после мероприятия.</p>
+
+                    <h3 class="goal-title">Қауіпсіз әрі сапалы ұйымдастырылған спорттық шара өткізу</h3>
+
+                    <p>Барлық халықаралық және ұлттық талаптарға сай ұйымдастыру: қауіпсіздік, медициналық көмек, инфрақұрылым.</p>
+
                 </div>
+
                 <div class="goal-card">
+
                     <div class="goal-icon">
+
                         <i class="fas fa-globe-asia"></i>
+
                     </div>
-                    <h3 class="goal-title">Развитие туризма</h3>
-                    <p>Марафон помогает показать красоту нашего региона и привлечь туристов со всего мира.</p>
+
+                    <h3 class="goal-title">Туризм мен қаланың имиджін көтеру</h3>
+
+                    <p>
+
+Шымкент қаласының табиғи ерекшеліктерін насихаттап, спорттық-туристік бағытта танымал ету.
+
+</p>
+
                 </div>
+
                 <div class="goal-card">
+
                     <div class="goal-icon">
+
                         <i class="fas fa-users"></i>
+
                     </div>
-                    <h3 class="goal-title">Создание сообщества</h3>
-                    <p>Мы объединяем людей, которые любят спорт, природу и здоровый образ жизни.</p>
+
+                    <h3 class="goal-title">Жастар мен балаларды спортқа тарту</h3>
+
+                    <p>
+
+Әртүрлі жас санаттарына арналған жүгіру қашықтықтарын ұйымдастыру арқылы спортты бұқараға қолжетімді ету.
+
+</p>
+
                 </div>
+
                 <div class="goal-card">
+
                     <div class="goal-icon">
+
                         <i class="fas fa-medal"></i>
+
                     </div>
-                    <h3 class="goal-title">Развитие спортивных талантов</h3>
-                    <p>Мы предоставляем платформу для начинающих спортсменов проявить себя и расти профессионально.</p>
+
+                    <h3 class="goal-title">Жергілікті қауымдастық пен демеушілерді тарту</h3>
+
+                    <p>Іс-шараға еріктілерді, серіктес компанияларды және қоғам белсенділерін қатыстыру арқылы біріктіру.
+
+</p>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- Distances Section -->
+
+
     <section id="distances">
+
         <div class="container">
-            <h2 class="section-title">Выбери свою дистанцию</h2>
+
+            <h2 class="section-title">Өз қашықтығыңды таңда</h2>
+
             
+
             <div class="distance-tabs">
+
                 <div class="distance-tab active" data-distance="5km">5 км</div>
+
                 <div class="distance-tab" data-distance="10km">10 км</div>
-                <div class="distance-tab" data-distance="15km">15 км</div>
-                <div class="distance-tab" data-distance="42km">42 км</div>
+
+                <div class="distance-tab" data-distance="21km">21 км</div>
+
             </div>
+
             
+
             <div class="distance-content active" id="5km-content">
+
                 <div class="distance-info">
+
                     <div class="distance-map">
+
                         <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background-color:#eee;">
-                            [Карта маршрута 5 км]
+
+                            [5 км маршрут картасы]
+
                         </div>
+
                     </div>
+
                     <div class="distance-details">
-                        <h3>5 км - Начальный уровень</h3>
-                        <p>Идеальная дистанция для тех, кто только начинает свой путь в горном беге. Маршрут проходит по живописным тропам с умеренным перепадом высот.</p>
-                        <p><strong>Сложность:</strong> Низкая</p>
-                        <p><strong>Набор высоты:</strong> 150 м</p>
-                        <p><strong>Время старта:</strong> 09:00</p>
-                        <p><strong>Лимит времени:</strong> 1.5 часа</p>
+
+                        <h3>5 км - Бастапқы деңгей</h3>
+
+                        <p>Тау жүгіруін жаңа бастағандар үшін тамаша қашықтық. Маршрут биіктік айырмашылығы орташа, әдемі соқпақтар арқылы өтеді.</p>
+
+                        <p><strong>Қиындық деңгейі:</strong> Төмен</p>
+
+                        <p><strong>Уақыт шектеуі:</strong> 1 сағат 15 минут</p>
+
+                        <p><strong>Басталу уақыты:</strong> 08:30</p>
+
+                    
+
                     </div>
+
                 </div>
+
                 
+
                 <div class="distance-prize">
-                    <h3>Призовой фонд</h3>
-                    <p>Все участники, завершившие дистанцию, получают памятные медали и сертификаты. Победители в своих возрастных категориях награждаются специальными призами от спонсоров.</p>
+
+                    <h3>Жүлде қоры</h3>
+
+                    <p>Қашықтықты аяқтаған барлық қатысушылар естелік медальдар мен сертификаттар тапсырылады. Жүлделер (кубок, спорттық тауарлар, демеушілер сыйлығы т.б.) ұйымдастырушы мен демеушілер тарапынан белгіленеді.</p>
+
                     
+
                     <div class="prize-items">
+
                         <div class="prize-item">
+
                             <div class="prize-icon">
+
                                 <i class="fas fa-medal"></i>
+
                             </div>
-                            <h4>1 место</h4>
+
+                            <h4>1 орын</h4>
+
                             <p>30000 ₸ + кубок</p>
+
                         </div>
+
                         <div class="prize-item">
+
                             <div class="prize-icon">
+
                                 <i class="fas fa-medal"></i>
+
                             </div>
-                            <h4>2 место</h4>
+
+                            <h4>2 орын</h4>
+
                             <p>20000 ₸</p>
+
                         </div>
+
                         <div class="prize-item">
+
                             <div class="prize-icon">
+
                                 <i class="fas fa-medal"></i>
+
                             </div>
-                            <h4>3 место</h4>
+
+                            <h4>3 орын</h4>
+
                             <p>10000 ₸</p>
+
                         </div>
+
                     </div>
+
                 </div>
+
                 
+
                 <div style="text-align: center; margin-top: 40px;">
-                    <a href="#register" class="btn">Зарегистрироваться на 5 км</a>
+
+                    <a href="#register" class="btn">5 км-ге тіркелу</a>
+
                 </div>
+
             </div>
+
             
+
             <div class="distance-content" id="10km-content">
-                <!-- Аналогичная структура для 10 км -->
+
+                <div class="distance-info">
+
+                    <div class="distance-map">
+
+                        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background-color:#eee;">
+
+                            [10 км маршрут картасы]
+
+                        </div>
+
+                    </div>
+
+                    <div class="distance-details">
+
+                        <h3>10 км - Орташа деңгей</h3>
+
+                        <p>Тәжірибелі жүгірушілер үшін қолайлы қашықтық. Қиындау учаскелері бар, бірақ көріністері әдемі.</p>
+
+                        <p><strong>Қиындық деңгейі:</strong> Орташа</p>
+
+                        <p><strong>Уақыт шектеуі:</strong> 3 сағат</p>
+
+                        <p><strong>Басталу уақыты:</strong> 08:30</p>
+
+                    </div>
+
+                </div>
+
+                <div class="distance-prize">
+
+                   <h3>Жүлде қоры</h3>
+
+                    <p>Қашықтықты аяқтаған барлық қатысушылар естелік медальдар мен сертификаттар тапсырылады. Жүлделер (кубок, спорттық тауарлар, демеушілер сыйлығы т.б.) ұйымдастырушы мен демеушілер тарапынан белгіленеді.</p>
+
+                    <div class="prize-items">
+
+                        <div class="prize-item">
+
+                            <div class="prize-icon">
+
+                                <i class="fas fa-medal"></i>
+
+                            </div>
+
+                            <h4>1 орын</h4>
+
+                            <p>50000 ₸ + кубок</p>
+
+                        </div>
+
+                        <div class="prize-item">
+
+                            <div class="prize-icon">
+
+                                <i class="fas fa-medal"></i>
+
+                            </div>
+
+                            <h4>2 орын</h4>
+
+                            <p>30000 ₸</p>
+
+                        </div>
+
+                        <div class="prize-item">
+
+                            <div class="prize-icon">
+
+                                <i class="fas fa-medal"></i>
+
+                            </div>
+
+                            <h4>3 орын</h4>
+
+                            <p>20000 ₸</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div style="text-align: center; margin-top: 40px;">
+
+                    <a href="#register" class="btn">10 км-ге тіркелу</a>
+
+                </div>
+
             </div>
+
             
-            <div class="distance-content" id="15km-content">
-                <!-- Аналогичная структура для 15 км -->
+
+            <div class="distance-content" id="21km-content">
+
+                <div class="distance-info">
+
+                    <div class="distance-map">
+
+                        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background-color:#eee;">
+
+                            [21 км маршрут картасы]
+
+                        </div>
+
+                    </div>
+
+                    <div class="distance-details">
+
+                        <h3>21 км - Қиын деңгей</h3>
+
+                        <p>Өз күштерін шынымен сынағысы келетін дайындалған спортшыларға арналған. Тау баурайларындағы тік көтерілістер мен түсулер.</p>
+
+                        <p><strong>Қиындық деңгейі:</strong> Жоғары</p>
+
+                        <p><strong>Уақыт шектеуі:</strong> 4.5 сағат</p>
+
+                        <p><strong>Басталу уақыты:</strong> 08:00</p>
+
+                    </div>
+
+                </div>
+
+                <div class="distance-prize">
+
+                    <h3>Жүлде қоры</h3>
+
+                    <p>Қашықтықты аяқтаған барлық қатысушылар естелік медальдар мен сертификаттар тапсырылады. Жүлделер (кубок, спорттық тауарлар, демеушілер сыйлығы т.б.) ұйымдастырушы мен демеушілер тарапынан белгіленеді.</p>
+
+                    <div class="prize-items">
+
+                        <div class="prize-item">
+
+                            <div class="prize-icon">
+
+                                <i class="fas fa-medal"></i>
+
+                            </div>
+
+                            <h4>1 орын</h4>
+
+                            <p>80000 ₸ + кубок</p>
+
+                        </div>
+
+                        <div class="prize-item">
+
+                            <div class="prize-icon">
+
+                                <i class="fas fa-medal"></i>
+
+                            </div>
+
+                            <h4>2 орын</h4>
+
+                            <p>50000 ₸</p>
+
+                        </div>
+
+                        <div class="prize-item">
+
+                            <div class="prize-icon">
+
+                                <i class="fas fa-medal"></i>
+
+                            </div>
+
+                            <h4>3 орын</h4>
+
+                            <p>30000 ₸</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div style="text-align: center; margin-top: 40px;">
+
+                    <a href="#register" class="btn">15 км-ге тіркелу</a>
+
+                </div>
+
             </div>
+
             
+
             <div class="distance-content" id="42km-content">
-                <!-- Аналогичная структура для 42 км -->
+
+                <div class="distance-info">
+
+                    <div class="distance-map">
+
+                        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background-color:#eee;">
+
+                            [42 км маршрут картасы]
+
+                        </div>
+
+                    </div>
+
+                    <div class="distance-details">
+
+                        <h3>42 км - Толық марафон</h3>
+
+                        <p>Тек ең тәжірибелі және дайындалған спортшылар үшін. Нағыз шыдамдылық сынағы және тау шыңдарының керемет көріністері.</p>
+
+                        <p><strong>Қиындық деңгейі:</strong> Өте жоғары</p>
+
+                        <p><strong>Биіктік жиыны:</strong> 1200 м</p>
+
+                        <p><strong>Басталу уақыты:</strong> 07:00</p>
+
+                        <p><strong>Уақыт лимиті:</strong> 8 сағат</p>
+
+                    </div>
+
+                </div>
+
+                <div class="distance-prize">
+
+                    <h3>Жүлде қоры</h3>
+
+                    <p>Қашықтықты аяқтаған барлық қатысушылар естелік медальдар мен сертификаттар алады. Өз жас ерекшеліктері бойынша жеңімпаздар демеушілерден арнайы сыйлықтармен марапатталады.</p>
+
+                    <div class="prize-items">
+
+                        <div class="prize-item">
+
+                            <div class="prize-icon">
+
+                                <i class="fas fa-medal"></i>
+
+                            </div>
+
+                            <h4>1 орын</h4>
+
+                            <p>150000 ₸ + кубок</p>
+
+                        </div>
+
+                        <div class="prize-item">
+
+                            <div class="prize-icon">
+
+                                <i class="fas fa-medal"></i>
+
+                            </div>
+
+                            <h4>2 орын</h4>
+
+                            <p>100000 ₸</p>
+
+                        </div>
+
+                        <div class="prize-item">
+
+                            <div class="prize-icon">
+
+                                <i class="fas fa-medal"></i>
+
+                            </div>
+
+                            <h4>3 орын</h4>
+
+                            <p>70000 ₸</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div style="text-align: center; margin-top: 40px;">
+
+                    <a href="#register" class="btn">42 км-ге тіркелу</a>
+
+                </div>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- Documents Section -->
+
+
     <section id="documents">
+
         <div class="container">
-            <h2 class="section-title">Документы</h2>
+
+            <h2 class="section-title">Құжаттар</h2>
+
             
+
             <div class="documents-grid">
+
                 <a href="#" class="document-card">
+
                     <div class="document-icon">
+
                         <i class="fas fa-file-alt"></i>
+
                     </div>
-                    <h3>Правила участия</h3>
+
+                    <h3>Қатысу ережелері</h3>
+
                     <p>PDF, 250 KB</p>
+
                 </a>
+
                 <a href="#" class="document-card">
+
                     <div class="document-icon">
+
                         <i class="fas fa-file-medical"></i>
+
                     </div>
-                    <h3>Медицинская справка</h3>
+
+                    <h3>Медициналық анықтама</h3>
+
                     <p>DOC, 120 KB</p>
+
                 </a>
+
                 <a href="#" class="document-card">
+
                     <div class="document-icon">
+
                         <i class="fas fa-file-signature"></i>
+
                     </div>
-                    <h3>Согласие на обработку данных</h3>
+
+                    <h3>Деректерді өңдеуге келісім</h3>
+
                     <p>PDF, 180 KB</p>
+
                 </a>
+
                 <a href="#" class="document-card">
+
                     <div class="document-icon">
+
                         <i class="fas fa-file-contract"></i>
+
                     </div>
-                    <h3>Договор-оферта</h3>
+
+                    <h3>Оферта шарты</h3>
+
                     <p>PDF, 350 KB</p>
+
                 </a>
+
                 <a href="#" class="document-card">
+
                     <div class="document-icon">
+
                         <i class="fas fa-map-marked-alt"></i>
+
                     </div>
-                    <h3>Карта маршрутов</h3>
+
+                    <h3>Маршрут картасы</h3>
+
                     <p>JPG, 1.2 MB</p>
+
                 </a>
+
                 <a href="#" class="document-card">
+
                     <div class="document-icon">
+
                         <i class="fas fa-question-circle"></i>
+
                     </div>
-                    <h3>Частые вопросы</h3>
+
+                    <h3>Жиі қойылатын сұрақтар</h3>
+
                     <p>PDF, 420 KB</p>
+
                 </a>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- Organizers Section -->
+
+
     <section id="organizers">
+
         <div class="container">
-            <h2 class="section-title">Организаторы</h2>
+
+            <h2 class="section-title">Ұйымдастырушылар</h2>
+
             
+
             <div class="organizers-category">
-                <h3 class="category-title">Организаторы</h3>
+
+                <h3 class="category-title">Ұйымдастырушылар</h3>
+
                 <div class="logos-grid">
+
                     <div class="logo-item">
-                        <img src="https://via.placeholder.com/150x60" alt="Организатор 1">
+
+                        <img src="https://via.placeholder.com/150x60" alt="Ұйымдастырушы 1">
+
                     </div>
+
                     <div class="logo-item">
-                        <img src="https://via.placeholder.com/150x60" alt="Организатор 2">
+
+                        <img src="https://via.placeholder.com/150x60" alt="Ұйымдастырушы 2">
+
                     </div>
+
                     <div class="logo-item">
-                        <img src="https://via.placeholder.com/150x60" alt="Организатор 3">
+
+                        <img src="https://via.placeholder.com/150x60" alt="Ұйымдастырушы 3">
+
                     </div>
+
                 </div>
+
             </div>
+
             
+
             <div class="organizers-category">
-                <h3 class="category-title">Партнеры</h3>
+
+                <h3 class="category-title">Серіктестер</h3>
+
                 <div class="logos-grid">
+
                     <div class="logo-item">
-                        <img src="https://via.placeholder.com/150x60" alt="Партнер 1">
+
+                        <img src="https://via.placeholder.com/150x60" alt="Серіктес 1">
+
                     </div>
+
                     <div class="logo-item">
-                        <img src="https://via.placeholder.com/150x60" alt="Партнер 2">
+
+                        <img src="https://via.placeholder.com/150x60" alt="Серіктес 2">
+
                     </div>
+
                     <div class="logo-item">
-                        <img src="https://via.placeholder.com/150x60" alt="Партнер 3">
+
+                        <img src="https://via.placeholder.com/150x60" alt="Серіктес 3">
+
                     </div>
+
                     <div class="logo-item">
-                        <img src="https://via.placeholder.com/150x60" alt="Партнер 4">
+
+                        <img src="https://via.placeholder.com/150x60" alt="Серіктес 4">
+
                     </div>
+
                 </div>
+
             </div>
+
             
+
             <div class="organizers-category">
-                <h3 class="category-title">При поддержке</h3>
+
+                <h3 class="category-title">Қолдау көрсеткендер</h3>
+
                 <div class="logos-grid">
+
                     <div class="logo-item">
-                        <img src="https://via.placeholder.com/150x60" alt="Поддержка 1">
+
+                        <img src="https://via.placeholder.com/150x60" alt="Қолдаушы 1">
+
                     </div>
+
                     <div class="logo-item">
-                        <img src="https://via.placeholder.com/150x60" alt="Поддержка 2">
+
+                        <img src="https://via.placeholder.com/150x60" alt="Қолдаушы 2">
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- Starter Kits Section -->
+
+
     <section id="starter-kits">
+
         <div class="container">
-            <h2 class="section-title">Выдача стартовых пакетов</h2>
+
+            <h2 class="section-title">Бастапқы пакеттерді беру</h2>
+
             
+
             <div class="kit-content">
+
                 <div class="kit-map">
+
                     <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background-color:#eee;">
-                        [Карта пункта выдачи]
+
+                        [Беру пунктінің картасы]
+
                     </div>
+
                 </div>
+
                 <div class="kit-details">
-                    <h3>Адрес выдачи стартовых пакетов</h3>
-                    <p>г. Шымкент, ул. Спортивная, 15 (ТРЦ "Астана")</p>
-                    <p><strong>Даты выдачи:</strong> 13-14 сентября 2023 года</p>
-                    <p><strong>Часы работы:</strong> 10:00 - 20:00</p>
+
+                    <h3>Бастапқы пакеттерді беру мекенжайы</h3>
+
+                    <p>Шымкент қаласы, Спортивная көшесі, 15 (ТРЦ "Астана")</p>
+
+                    <p><strong>Беру күндері:</strong> 2023 жылғы 13-14 қыркүйек</p>
+
+                    <p><strong>Жұмыс уақыты:</strong> 10:00 - 20:00</p>
+
                     
+
                     <div class="kit-items">
-                        <h3>Что входит в стартовый пакет:</h3>
+
+                        <h3>Бастапқы пакетке не кіреді:</h3>
+
                         
+
                         <div class="kit-item">
+
                             <div class="kit-icon">
+
                                 <i class="fas fa-tshirt"></i>
+
                             </div>
-                            <p>Фирменная футболка марафона</p>
+
+                            <p>Марафонның фирмалық футболкасы</p>
+
                         </div>
+
                         <div class="kit-item">
+
                             <div class="kit-icon">
+
                                 <i class="fas fa-id-badge"></i>
+
                             </div>
-                            <p>Стартовый номер с чипом</p>
+
+                            <p>Чипі бар бастапқы нөмір</p>
+
                         </div>
+
                         <div class="kit-item">
+
                             <div class="kit-icon">
+
                                 <i class="fas fa-map"></i>
+
                             </div>
-                            <p>Карта маршрута</p>
+
+                            <p>Маршрут картасы</p>
+
                         </div>
+
                         <div class="kit-item">
+
                             <div class="kit-icon">
+
                                 <i class="fas fa-tag"></i>
+
                             </div>
-                            <p>Скидки от партнеров</p>
+
+                            <p>Серіктестерден жеңілдіктер</p>
+
                         </div>
+
                         <div class="kit-item">
+
                             <div class="kit-icon">
+
                                 <i class="fas fa-gift"></i>
+
                             </div>
-                            <p>Подарки от спонсоров</p>
+
+                            <p>Демеушілерден сыйлықтар</p>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- Registration Section -->
+
+
     <section id="register" style="background-color: var(--primary); color: white;">
+
         <div class="container">
-            <h2 class="section-title" style="color: white;">Регистрация</h2>
+
+            <h2 class="section-title" style="color: white;">Тіркелу</h2>
+
             
+
             <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-                <p>Зарегистрируйтесь на марафон прямо сейчас и получите скидку 10% при ранней регистрации!</p>
+
+                <p>Марафонға қазір тіркеліңіз және ерте тіркелген кезде 10% жеңілдік алыңыз!</p>
+
                 
+
                 <form style="margin-top: 40px;">
+
                     <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 20px;">
-                        <input type="text" placeholder="Ваше имя" style="flex:1; min-width:200px; padding:15px; border-radius:5px; border:none;">
+
+                        <input type="text" placeholder="Сіздің атыңыз" style="flex:1; min-width:200px; padding:15px; border-radius:5px; border:none;">
+
                         <input type="email" placeholder="Email" style="flex:1; min-width:200px; padding:15px; border-radius:5px; border:none;">
+
                     </div>
+
                     <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 20px;">
+
                         <input type="tel" placeholder="Телефон" style="flex:1; min-width:200px; padding:15px; border-radius:5px; border:none;">
+
                         <select style="flex:1; min-width:200px; padding:15px; border-radius:5px; border:none;">
-                            <option value="">Выберите дистанцию</option>
+
+                            <option value="">Қашықтықты таңдаңыз</option>
+
                             <option value="5km">5 км</option>
+
                             <option value="10km">10 км</option>
+
                             <option value="15km">15 км</option>
+
                             <option value="42km">42 км</option>
+
                         </select>
+
                     </div>
-                    <button type="submit" class="btn" style="background-color: var(--accent); margin-top: 20px;">Отправить заявку</button>
+
+                    <button type="submit" class="btn" style="background-color: var(--accent); margin-top: 20px;">Өтініш жіберу</button>
+
                 </form>
+
                 
-                <p style="margin-top: 30px; font-size: 0.9rem;">Нажимая кнопку, вы соглашаетесь с <a href="#" style="color: var(--accent); text-decoration: underline;">правилами участия</a> и <a href="#" style="color: var(--accent); text-decoration: underline;">политикой конфиденциальности</a>.</p>
+
+                <p style="margin-top: 30px; font-size: 0.9rem;">Түймені басу арқылы сіз <a href="#" style="color: var(--accent); text-decoration: underline;">қатысу ережелерімен</a> және <a href="#" style="color: var(--accent); text-decoration: underline;">құпиялылық саясатымен</a> келісесіз.</p>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- Footer -->
+
+
     <footer>
+
         <div class="container">
+
             <div class="footer-content">
+
                 <div class="footer-section">
+
                     <h3 class="footer-title">Mountain Running Shymkent</h3>
-                    <p>Самый захватывающий горный марафон года в Казахстане. Присоединяйтесь к нам!</p>
+
+                    <p>Қазақстандағы жылдың ең қызықты тау марафоны. Бізге қосылыңыз!</p>
+
                 </div>
+
                 <div class="footer-section">
-                    <h3 class="footer-title">Контакты</h3>
+
+                    <h3 class="footer-title">Байланыстар</h3>
+
                     <p><i class="fas fa-envelope" style="margin-right:10px;"></i> info@mountainrun.kz</p>
+
                     <p><i class="fas fa-phone" style="margin-right:10px;"></i> +7 777 123 45 67</p>
-                    <p><i class="fas fa-map-marker-alt" style="margin-right:10px;"></i> г. Шымкент, ул. Спортивная, 15</p>
+
+                    <p><i class="fas fa-map-marker-alt" style="margin-right:10px;"></i> Шымкент қаласы, Спортивная көшесі, 15</p>
+
                 </div>
-                <div class="footer-section">
-                    <h3 class="footer-title">Социальные сети</h3>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-telegram-plane"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
+
+ <footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">Mountain Running Shymkent</h3>
+                <p>Қазақстандағы жылдың ең қызықты тау марафоны. Бізге қосылыңыз!</p>
             </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 Mountain Running Shymkent. Все права защищены.</p>
+            <div class="footer-section">
+                <h3 class="footer-title">Байланыс</h3>
+                <p><i class="fas fa-envelope" style="margin-right:10px;"></i> info@mountainrun.kz</p>
+                <p><i class="fas fa-phone" style="margin-right:10px;"></i> +7 777 123 45 67</p>
+                <p><i class="fas fa-map-marker-alt" style="margin-right:10px;"></i> Шымкент қ., Спорт к-сі, 15</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Әлеуметтік желілер</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+                <div class="lang-switcher-footer">
+                    <a href="#" class="active-lang">KZ</a> <span style="color: rgba(255, 255, 255, 0.7);">|</span> <a href="ru.html">RU</a>
+                </div>
             </div>
         </div>
-    </footer>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Mountain Running Shymkent. Барлық құқықтар қорғалған.</p>
+        </div>
+    </div>
+</footer>
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const backdrop = document.querySelector('.backdrop');
-        const closeMenuBtn = document.querySelector('.close-menu-btn');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            backdrop.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-        
-        closeMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            backdrop.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        backdrop.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            backdrop.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        // Distance Tabs
-        const distanceTabs = document.querySelectorAll('.distance-tab');
-        const distanceContents = document.querySelectorAll('.distance-content');
-        
-        distanceTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remove active class from all tabs and contents
-                distanceTabs.forEach(t => t.classList.remove('active'));
-                distanceContents.forEach(c => c.classList.remove('active'));
-                
-                // Add active class to clicked tab
-                tab.classList.add('active');
-                
-                // Show corresponding content
-                const distance = tab.getAttribute('data-distance');
-                document.getElementById(`${distance}-content`).classList.add('active');
-            });
-        });
-        
-        // Countdown Timer
-        function updateCountdown() {
-            const marathonDate = new Date('September 15, 2025 09:00:00').getTime();
-            const now = new Date().getTime();
-            const distance = marathonDate - now;
-            
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
-        
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-        
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navContainer = document.querySelector('.nav-container');
-            if (window.scrollY > 50) {
-                navContainer.classList.add('nav-scrolled');
-            } else {
-                navContainer.classList.remove('nav-scrolled');
-            }
-        });
-        
-        // Smooth Scrolling for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Close mobile menu if open
-                    mobileMenu.classList.remove('active');
-                    backdrop.classList.remove('active');
-                    document.body.style.overflow = '';
-                    
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+
+
+    <script src="script.js"></script>
+
+    
+
 </body>
-</html>
+
+</html>                                   
