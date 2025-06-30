@@ -22,24 +22,7 @@
             document.body.style.overflow = '';
         });
         
-        // Distance Tabs
-        const distanceTabs = document.querySelectorAll('.distance-tab');
-        const distanceContents = document.querySelectorAll('.distance-content');
-        
-        distanceTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remove active class from all tabs and contents
-                distanceTabs.forEach(t => t.classList.remove('active'));
-                distanceContents.forEach(c => c.classList.remove('active'));
-                
-                // Add active class to clicked tab
-                tab.classList.add('active');
-                
-                // Show corresponding content
-                const distance = tab.getAttribute('data-distance');
-                document.getElementById(`${distance}-content`).classList.add('active');
-            });
-        });
+       
         
         // Countdown Timer
         function updateCountdown() {
@@ -93,3 +76,61 @@
                 }
             });
         });
+
+
+
+        // Distance Tabs with Video Control
+const distanceTabs = document.querySelectorAll('.distance-tab');
+const distanceContents = document.querySelectorAll('.distance-content');
+
+// Функция для запуска видео в активной вкладке при первой загрузке страницы
+function playInitialVideo() {
+    const activeContent = document.querySelector('.distance-content.active');
+    if (activeContent) {
+        const video = activeContent.querySelector('video');
+        if (video) {
+            video.play().catch(error => {
+                console.error("Initial video play failed:", error);
+            });
+        }
+    }
+}
+
+distanceTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // 1. Сначала останавливаем и сбрасываем ВСЕ видео
+        distanceContents.forEach(content => {
+            const video = content.querySelector('video');
+            if (video) {
+                video.pause();
+                video.currentTime = 0; // Сбрасываем видео на начало
+            }
+        });
+
+        // 2. Убираем класс 'active' со всех вкладок и контентов
+        distanceTabs.forEach(t => t.classList.remove('active'));
+        distanceContents.forEach(c => c.classList.remove('active'));
+
+        // 3. Добавляем класс 'active' к нажатой вкладке
+        tab.classList.add('active');
+
+        // 4. Показываем соответствующий контент и запускаем в нем видео
+        const distance = tab.getAttribute('data-distance');
+        const activeContent = document.getElementById(`${distance}-content`);
+        
+        if (activeContent) {
+            activeContent.classList.add('active');
+            const activeVideo = activeContent.querySelector('video');
+            if (activeVideo) {
+                // play() возвращает Promise, его лучше обрабатывать
+                activeVideo.play().catch(error => {
+                    console.error("Video play failed:", error);
+                    // Эта ошибка может возникнуть, если пользователь еще не взаимодействовал со страницей
+                });
+            }
+        }
+    });
+});
+
+// Запускаем видео в активной вкладке (5км) при первой загрузке страницы
+document.addEventListener('DOMContentLoaded', playInitialVideo);
