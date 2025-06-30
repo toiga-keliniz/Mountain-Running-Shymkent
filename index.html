@@ -23,7 +23,13 @@
 <div class="nav-container">
     <div class="container">
         <nav>
-            <a href="#" class="nav-logo">Mountain<span>Run</span></a>
+            <!-- ИЗМЕНЕНИЕ: Логотип и переключатель языка теперь в одной группе -->
+            <div class="nav-group-left">
+                <a href="#" class="nav-logo">Mountain<span>Run</span></a>
+                <!-- Переключатель языка для десктопной версии -->
+                <a href="ru.html" class="lang-switch desktop-lang-switch">RU</a>
+            </div>
+            
             <div class="nav-links">
                 <a href="#about" class="nav-link">Марафон туралы</a>
                 <a href="#goals" class="nav-link">Біздің мақсатымыз</a>
@@ -32,11 +38,15 @@
                 <a href="#organizers" class="nav-link">Ұйымдастырушылар</a>
                 <a href="#starter-kits" class="nav-link">Бастапқы пакеттер</a>
                 <a href="#register" class="btn btn-outline">Тіркелу</a>
-                <a href="ru.html" class="lang-switch">RU</a>
+                <!-- Переключатель языка отсюда убран -->
             </div>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
+
+            <!-- ИЗМЕНЕНИЕ: В кнопку меню добавлен переключатель для мобильной версии -->
+            <div class="nav-group-right">
+                 <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                 </button>
+            </div>
         </nav>
     </div>
 </div>
@@ -48,6 +58,7 @@
             <i class="fas fa-times"></i>
         </button>
     </div>
+
     <a href="#about" class="mobile-nav-link">Марафон туралы</a>
     <a href="#goals" class="mobile-nav-link">Біздің мақсатымыз</a>
     <a href="#distances" class="mobile-nav-link">Қашықтықтар</a>
@@ -55,7 +66,6 @@
     <a href="#organizers" class="mobile-nav-link">Ұйымдастырушылар</a>
     <a href="#starter-kits" class="mobile-nav-link">Бастапқы пакеттер</a>
     <a href="#register" class="btn">Тіркелу</a>
-    <a href="ru.html" class="mobile-nav-link lang-switch">RU</a>
 </div>
 <div class="backdrop"></div>
 
@@ -350,15 +360,13 @@
 
                 <div class="distance-info">
 
-                    <div class="distance-map">
-
-                        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background-color:#eee;">
-
-                            [5 км маршрут картасы]
-
-                        </div>
-
-                    </div>
+                  <div class="distance-map">
+                    <!-- ВИДЕО ВСТАВЛЕНО СЮДА -->
+                    <video width="100%" height="100%" loop muted playsinline>
+                        <source src="media/IMG_1065.MP4" type="video/mp4">
+                        Ваш браузер не поддерживает тег video.
+                    </video>
+                </div>
 
                     <div class="distance-details">
 
@@ -451,17 +459,13 @@
             <div class="distance-content" id="10km-content">
 
                 <div class="distance-info">
-
-                    <div class="distance-map">
-
-                        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background-color:#eee;">
-
-                            [10 км маршрут картасы]
-
-                        </div>
-
-                    </div>
-
+                <div class="distance-map">
+                    <!-- ВИДЕО ВСТАВЛЕНО СЮДА -->
+                    <video width="100%" height="100%" loop muted playsinline>
+                        <source src="media/IMG_1068.MOV" type="video/mp4">
+                        Ваш браузер не поддерживает тег video.
+                    </video>
+                </div>
                     <div class="distance-details">
 
                         <h3>10 км - Орташа деңгей</h3>
@@ -547,15 +551,12 @@
                 <div class="distance-info">
 
                     <div class="distance-map">
-
-                        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background-color:#eee;">
-
-                            [21 км маршрут картасы]
-
-                        </div>
-
-                    </div>
-
+                    <!-- ВИДЕО ВСТАВЛЕНО СЮДА -->
+                    <video width="100%" height="100%" loop muted playsinline>
+                        <source src="media/IMG_1069.MP4" type="video/mp4">
+                        Ваш браузер не поддерживает тег video.
+                    </video>
+                </div>
                     <div class="distance-details">
 
                         <h3>21 км - Қиын деңгей</h3>
