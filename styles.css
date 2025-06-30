@@ -325,7 +325,7 @@
             flex: 1;
             min-width: 300px;
             height: 350px;
-            background-color: #ddd;
+            background-color: #dddddd00;
             border-radius: 10px;
             overflow: hidden;
             position: relative;
@@ -782,18 +782,6 @@
 
 
 
-
-
-
-        Вы абсолютно правы! Просто ссылка на язык, выглядящая как кнопка регистрации, не очень хорошо. Давайте сделаем переключатель языка более элегантным и гармоничным с вашим дизайном.
-
-Я внесу изменения в ваши CSS-стили и добавлю новые правила для .lang-switch и .lang-switcher-footer, чтобы они выглядели как отдельные, стильные элементы, а не просто кнопки.
-
-Обновленные CSS стили
-Вставьте эти стили в ваш <style> блок или в ваш CSS-файл. Они будут использоваться для обеих версий (index.html и ru.html).
-
-CSS
-
 /* Language Switcher Styles */
 .lang-switch {
     display: inline-block;
@@ -859,4 +847,12 @@ CSS
     .nav-links .lang-switch {
         /* This rule won't apply because .nav-links is display: none; on mobile */
     }
+}
+
+/* СДЕЛАЙТЕ ТАК: */
+.distance-map video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Это свойство покажет видео целиком */
+    border-radius: 10px; 
 }
