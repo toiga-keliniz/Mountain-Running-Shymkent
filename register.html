@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тіркелу - Mountain Running Shymkent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Ссылка на ваш основной файл стилей -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- НАВИГАЦИЯ (такая же, как на главной, но ссылки ведут на главную) -->
+<div class="nav-container nav-scrolled"> <!-- Сразу делаем фон видимым -->
+    <div class="container">
+        <nav>
+            <div class="nav-group-left">
+                <a href="index.html" class="nav-logo">Mountain<span>Run</span></a>
+                <a href="register-ru.html" class="lang-switch desktop-lang-switch">RU</a> <!-- Ссылка на русскую версию регистрации -->
+            </div>
+            <div class="nav-links">
+                <a href="index.html#about" class="nav-link">Марафон туралы</a>
+                <a href="index.html#distances" class="nav-link">Қашықтықтар</a>
+                <a href="index.html#documents" class="nav-link">Құжаттар</a>
+            </div>
+            <div class="nav-group-right">
+                 <a href="register-ru.html" class="lang-switch mobile-lang-switch">RU</a>
+                 <!-- Кнопка мобильного меню может не понадобиться, но оставим для консистентности -->
+                 <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                 </button>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<!-- Мобильное меню (ведет на главную страницу) -->
+<div class="mobile-menu">
+    <div class="mobile-menu-header">
+        <a href="index.html" class="nav-logo">Mountain<span>Run</span></a>
+        <button class="close-menu-btn"><i class="fas fa-times"></i></button>
+    </div>
+    <a href="index.html#about" class="mobile-nav-link">Марафон туралы</a>
+    <a href="index.html#distances" class="mobile-nav-link">Қашықтықтар</a>
+    <a href="index.html#documents" class="mobile-nav-link">Құжаттар</a>
+    <a href="index.html#organizers" class="mobile-nav-link">Ұйымдастырушылар</a>
+</div>
+<div class="backdrop"></div>
+
+<!-- =================== НАЧАЛО СЕКЦИИ РЕГИСТРАЦИИ =================== -->
+<section id="register" style="padding-top: 120px;"> <!-- Добавляем отступ сверху из-за фиксированной шапки -->
+    <div class="container">
+        <h2 class="section-title">Марафонға тіркелу</h2>
+        <div class="register-layout">
+
+            <!-- Левая колонка: Форма для заполнения -->
+            <div class="register-form-container">
+                <h3>1. Қатысушы деректері</h3>
+                <form id="registration-form" novalidate>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="firstName">Аты (Имя)</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Тегі (Фамилия)</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон нөмірі</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+7 (7XX) XXX-XX-XX" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="city">Қала (Город)</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="distance">Қашықтықты таңдаңыз</label>
+                            <select id="distance" name="distance" required>
+                                <option value="" data-price="0">-- Таңдау --</option>
+                                <option value="Fun Run - 5 км" data-price="12000">Fun Run - 5 км (12,000 ₸)</option>
+                                <option value="Classic Trail - 10км" data-price="15000">Classic Trail - 10км (15,000 ₸)</option>
+                                <option value="Classic Trail Pro+ - 12км" data-price="16000">Classic Trail Pro+ - 12км (16,000 ₸)</option>
+                                <option value="Half Marathon Trail - 21 км" data-price="18000">Half Marathon Trail - 21 км (18,000 ₸)</option>
+                                <option value="Hiking - 10 км" data-price="15000">Hiking - 10 км (15,000 ₸)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <h3>Қайырымдылық (По желанию)</h3>
+                    <div class="charity-options">
+                        <button type="button" class="charity-btn" data-amount="500">500 ₸</button>
+                        <button type="button" class="charity-btn" data-amount="1000">1000 ₸</button>
+                        <button type="button" class="charity-btn" data-amount="2000">2000 ₸</button>
+                        <button type="button" class="charity-btn" data-amount="5000">5000 ₸</button>
+                        <button type="button" class="charity-btn" data-amount="10000">10000 ₸</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="charity-custom">Немесе өз сомаңызды енгізіңіз (тг)</label>
+                        <input type="number" id="charity-custom" name="charity-custom" min="0" placeholder="Мысалы: 777">
+                    </div>
+                </form>
+            </div>
+
+            <!-- Правая колонка: Инструкции по оплате -->
+        <!-- Правая колонка: Инструкции по оплате -->
+<div class="payment-instructions">
+    <h3>2. Төлем жасау</h3>
+
+    <!-- Блок с итоговой суммой (остается на месте) -->
+    <div class="total-summary">
+        <p>Қашықтық: <span id="summary-distance-price">0 ₸</span></p>
+        <p>Қайырымдылық: <span id="summary-charity-price">0 ₸</span></p>
+        <hr>
+        <p class="total-amount">Жалпы сома: <strong id="summary-total-price">0 ₸</strong></p>
+    </div>
+    
+    <!-- =================== ИЗМЕНЕНИЕ ЗДЕСЬ =================== -->
+    <!-- Блок с текстом для копирования ПЕРЕМЕЩЕН СЮДА (сразу после итоговой суммы) -->
+    <div class="copy-details">
+        <h4>Маңызды! Төлем хабарламасына мынаны көшіріп, қойыңыз:</h4>
+        <div class="copy-text-area" id="text-to-copy"></div>
+        <button type="button" class="btn btn-outline" id="copy-btn"><i class="fas fa-copy"></i> Мәтінді көшіру</button>
+        <span id="copy-success-msg" style="display:none; color: var(--success); margin-left: 10px;">Көшірілді!</span>
+    </div>
+    <!-- ======================================================== -->
+
+    <!-- Блок с QR и ссылкой на оплату (теперь идет после блока копирования) -->
+    <div class="payment-details">
+        <p>Төмендегі QR код арқылы немесе Kaspi Pay-ге өтіп, көрсетілген соманы дәлме-дәл төлеңіз.</p>
+        <img src="https://s.iimg.su/s/02/M3Qd6z7F0M4B0g29yXlYx5zC0nJgYmB8m1f3v9gH.png" alt="Kaspi QR Code" class="qr-code">
+        <a href="https://pay.kaspi.kz/pay/aelcmo5f" target="_blank" class="btn kaspi-link">Kaspi Pay арқылы төлеу</a>
+    </div>
+          
+
+                <div class="final-step">
+                    <h3>3. Тіркелуді аяқтау</h3>
+                    <div class="form-group-checkbox">
+                        <input type="checkbox" id="payment-confirmed" required>
+                        <label for="payment-confirmed">Мен төлем жасағанымды растаймын.</label>
+                    </div>
+                    <div class="form-group-checkbox">
+                        <input type="checkbox" id="rules-agreed" required>
+                        <label for="rules-agreed">С <a href="#" target="_blank">Ережелермен</a> таныстым.</label>
+                    </div>
+                     <div class="form-group-checkbox">
+                        <input type="checkbox" id="offer-agreed" required>
+                        <label for="offer-agreed">С <a href="#" target="_blank">Оферта шартымен</a> таныстым.</label>
+                    </div>
+                    <button type="submit" form="registration-form" class="btn submit-btn">Деректерді жіберу</button>
+                    <div id="form-status" style="margin-top: 15px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =================== КОНЕЦ СЕКЦИИ РЕГИСТРАЦИИ =================== -->
+
+
+<!-- ПОДВАЛ (такой же, как на главной) -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">Mountain Running Shymkent</h3>
+                <p>Қазақстандағы жылдың ең қызықты тау марафоны. Бізге қосылыңыз!</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Байланыс</h3>
+                <p><i class="fas fa-envelope" style="margin-right:10px;"></i> info@mountainrun.kz</p>
+                <p><i class="fas fa-phone" style="margin-right:10px;"></i> +7 777 123 45 67</p>
+                <p><i class="fas fa-map-marker-alt" style="margin-right:10px;"></i> Шымкент қ., Спорт к-сі, 15</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Әлеуметтік желілер</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+                 <div class="lang-switcher-footer">
+                    <a href="#" class="active-lang">KZ</a> <span style="color: rgba(255, 255, 255, 0.7);">|</span> <a href="register-ru.html">RU</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2023 Mountain Running Shymkent. Барлық құқықтар қорғалған.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Скрипт для мобильного меню (можно взять с главной) -->
+<script src="script.js"></script> 
+<!-- ОТДЕЛЬНЫЙ скрипт для логики формы регистрации -->
+<script src="register.js"></script>
+
+</body>
+</html>
