@@ -856,3 +856,42 @@
     object-fit: contain; /* Это свойство покажет видео целиком */
     border-radius: 10px; 
 }
+
+
+
+/* =================== СТИЛИ ДЛЯ СЕКЦИИ РЕГИСТРАЦИИ =================== */
+#register { background-color: white; }
+.register-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.register-form-container, .payment-instructions { background: var(--light); padding: 30px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+.register-form-container h3, .payment-instructions h3, .payment-instructions h4 { color: var(--secondary); margin-bottom: 20px; border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-group { display: flex; flex-direction: column; }
+.form-group.full-width { grid-column: 1 / -1; }
+.form-group label { margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+.form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-family: 'Open Sans', sans-serif; font-size: 1rem; transition: var(--transition); }
+.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 5px rgba(79, 195, 161, 0.5); }
+.charity-options { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+.charity-btn { padding: 8px 15px; background-color: white; border: 1px solid #ddd; border-radius: 50px; cursor: pointer; transition: var(--transition); }
+.charity-btn.active, .charity-btn:hover { background-color: var(--accent); color: white; border-color: var(--accent); }
+.total-summary { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid var(--primary); }
+.total-summary p { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.total-summary hr { border: none; border-top: 1px dashed #ccc; margin: 10px 0; }
+.total-summary .total-amount { font-size: 1.5rem; font-weight: 700; }
+.total-summary .total-amount strong { color: var(--primary); }
+.payment-details { text-align: center; }
+.qr-code { max-width: 200px; margin: 15px auto; display: block; border: 5px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.kaspi-link { display: block; max-width: 250px; margin: 15px auto; }
+.copy-details { margin-top: 30px; }
+.copy-details h4 { font-size: 1rem; text-align: center; }
+.copy-text-area { background: white; border: 1px dashed var(--secondary); padding: 15px; border-radius: 5px; margin: 10px 0; font-family: monospace; font-size: 0.9rem; word-wrap: break-word; }
+#copy-btn { width: 100%; }
+.final-step { margin-top: 30px; }
+.form-group-checkbox { display: flex; align-items: center; margin-bottom: 15px; }
+.form-group-checkbox input { width: auto; margin-right: 10px; transform: scale(1.2); }
+.form-group-checkbox label a { color: var(--primary); text-decoration: underline; }
+.submit-btn { width: 100%; padding: 15px; font-size: 1.1rem; }
+.submit-btn:disabled { background-color: #ccc; cursor: not-allowed; box-shadow: none; transform: none; }
+#form-status.success { color: var(--success); font-weight: bold; }
+#form-status.error { color: var(--danger); font-weight: bold; }
+@media (max-width: 992px) { .register-layout { grid-template-columns: 1fr; } }
+@media (max-width: 576px) { .form-grid { grid-template-columns: 1fr; } .register-form-container, .payment-instructions { padding: 20px; } }
