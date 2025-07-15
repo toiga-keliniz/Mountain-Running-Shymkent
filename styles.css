@@ -895,3 +895,121 @@
 #form-status.error { color: var(--danger); font-weight: bold; }
 @media (max-width: 992px) { .register-layout { grid-template-columns: 1fr; } }
 @media (max-width: 576px) { .form-grid { grid-template-columns: 1fr; } .register-form-container, .payment-instructions { padding: 20px; } }
+
+
+.btn-icon {
+    height: 40px; /* Подберите нужный вам размер, например, 18px или 22px */
+    width: auto;  /* Ширина подстроится автоматически, сохраняя пропорции */
+    vertical-align: middle; /* Очень важное свойство! Выравнивает иконку по центру текста */
+    margin-right: 8px; /* Создает отступ между иконкой и текстом */
+    /* Убираем небольшой отступ снизу, который иногда добавляется к картинкам */
+    margin-bottom: 3px; 
+    
+}
+
+.kaspi-link {
+    background-color: #f14635; /* Фирменный красный цвет Kaspi */
+    color: white;              /* Текст делаем белым для контраста */
+    border: 2px solid #f14635; /* Рамка того же цвета, чтобы не было видно границ */
+    box-shadow: 0 4px 15px rgba(241, 70, 53, 0.3); /* Тень тоже делаем красной */
+}
+
+/* Эффект при наведении на кнопку */
+.kaspi-link:hover {
+    background-color: #d93e2d; /* Немного затемняем красный при наведении */
+    border-color: #d93e2d;     /* И рамку тоже */
+    box-shadow: 0 6px 20px rgba(241, 70, 53, 0.45); /* Тень делаем чуть заметнее */
+    transform: translateY(-3px); /* Эффект "поднятия" оставляем */
+}
+
+/* Стили для вашей иконки внутри кнопки Kaspi */
+.kaspi-link .btn-icon {
+    height: 20px;
+    width: auto;
+    vertical-align: middle;
+    margin-right: 8px;
+    margin-bottom: 3px; 
+}
+
+
+/* ================================================= */
+/*          БАҒА БЛОГЫНЫҢ СТИЛЬДЕРІ                  */
+/* ================================================= */
+
+.price-block {
+    background-color: #f7fcfb; /* Акцент түсінің ашық реңкі */
+    border: 1px solid var(--accent);
+    border-left: 5px solid var(--accent);
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(79, 195, 161, 0.1);
+}
+
+.price-block .price-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.price-block .discount-badge {
+    background-color: #e74c3c; /* Ашық қызыл түс */
+    color: white;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.9em;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.price-block .price-values {
+    display: flex;
+    align-items: baseline; /* Бағаларды бір сызыққа туралайды */
+    gap: 15px; /* Араларында бос орын */
+    margin-left: 5px;
+}
+
+.price-block .old-price {
+    font-size: 1.1em;
+    color: #888;
+    text-decoration: line-through;
+}
+
+.price-block .current-price {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--secondary); /* Негізгі қою түс */
+}
+
+.price-block .promo-notice {
+    font-size: 0.9em;
+    color: #555;
+    text-align: center;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed #ddd;
+    font-style: italic;
+}
+
+.promo-info-box {
+    background-color: #fef9e7; /* Жылы сары түс */
+    border: 1px solid #f1c40f;
+    border-left: 5px solid #f1c40f;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px; /* Тізімнен алшақтау үшін */
+    display: flex;
+    align-items: center;
+}
+
+.promo-info-box .promo-icon {
+    font-size: 1.8em;
+    color: #f1c40f;
+    margin-right: 15px;
+}
+
+.promo-info-box .promo-text {
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #585858;
+}
