@@ -134,3 +134,5 @@ distanceTabs.forEach(tab => {
 
 // Запускаем видео в активной вкладке (5км) при первой загрузке страницы
 document.addEventListener('DOMContentLoaded', playInitialVideo);
+
+
