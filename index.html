@@ -16,6 +16,48 @@
 
     <link rel="stylesheet" href="styles.css">
 
+      <!-- ПОДКЛЮЧАЕМ API 2ГИС -->
+    <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+
+<!-- ВАШ ИСПРАВЛЕННЫЙ СКРИПТ В <head> -->
+<script type="text/javascript">
+    DG.then(function () {
+        var map = DG.map('map', {
+            // ИЗМЕНЕНИЕ: Теперь центр карты совпадает с положением маркера.
+            center: [42.193843, 70.3316], 
+            
+            // ИЗМЕНЕНИЕ: Увеличим масштаб для более детального вида.
+            // 15 или 16 - хороший выбор.
+            zoom: 15 
+        });
+
+        // Маркер остается на том же месте.
+        DG.marker([42.193843, 70.3316])
+          .addTo(map)
+          .bindPopup('Старт марафона здесь!');
+    });
+</script>
+
+<script type="text/javascript">
+    // Ждем, пока API 2ГИС будет готов
+    DG.then(function () {
+        // Создаем ВТОРУЮ карту в контейнере с id="kit-pickup-map"
+        var kitMap = DG.map('kit-pickup-map', {
+            // Координаты центра карты [широта, долгота]
+            // Я взял их из вашей ссылки, чтобы маркер был по центру
+            center: [42.18213, 69.893142], 
+            
+            // Масштаб карты
+            zoom: 20 // 16 - хороший детальный масштаб
+        });
+
+        // Добавляем маркер (отметку) на эту карту
+        DG.marker([42.18213, 69.893142])
+          .addTo(kitMap) // Добавляем маркер именно к нашей новой карте (kitMap)
+          .bindPopup('Стартер-киттерді осы жерден алуға болады'); // Текст при клике
+    });
+</script>
+
 </head>
 
 <body>
@@ -217,18 +259,9 @@
             </div>
 
             
-
-            <div class="map-container">
-
-                <div class="map-placeholder">
-
-                    [Карта местности будет здесь]
-
-                </div>
-
-            </div>
-
-        </div>
+<div id="map" class="map-container">
+    <!-- Этот div должен быть пустым. Карта будет создана здесь с помощью JavaScript -->
+</div>
 
     </section>
 
@@ -373,25 +406,26 @@
                     </video>
                 </div>
 
-                    <div class="distance-details">
+                   <div class="distance-details">
+    <h3>Fun Run - 5 км</h3>
+    <p>Тау жүгіруін жаңа бастағандар үшін тамаша қашықтық. Маршрут биіктік айырмашылығы орташа, әдемі соқпақтар арқылы өтеді.</p>
+    <p><strong>Қиындық деңгейі:</strong> Төмен</p>
+    <p><strong>Уақыт шектеуі:</strong> 1 сағат 15 минут</p>
+    <p><strong>Басталу уақыты:</strong> 08:30</p>
 
-                        <h3>Fun Run - 5 км</h3>
-
-                        <p>Тау жүгіруін жаңа бастағандар үшін тамаша қашықтық. Маршрут биіктік айырмашылығы орташа, әдемі соқпақтар арқылы өтеді.</p>
-
-                        <p><strong>Қиындық деңгейі:</strong> Төмен</p>
-
-                        <p><strong>Уақыт шектеуі:</strong> 1 сағат 15 минут</p>
-
-                        <p><strong>Басталу уақыты:</strong> 08:30</p>
-
-                        <p><strong>Бағасы:</strong> 12 000 тг</p>
-
-                        
-
-                    
-
-                    </div>
+    <!-- Жаңартылған баға блогы -->
+    <div class="price-block">
+        <div class="price-header">
+            <span class="discount-badge">-10%</span>
+            <strong>Бағасы:</strong>
+        </div>
+        <div class="price-values">
+            <del class="old-price">12 000 тг</del>
+            <span class="current-price">10 800 тг</span>
+        </div>
+        <p class="promo-notice">Акция тек 10.08.2025 дейін жарамды!</p>
+    </div>
+</div>
 
                 </div>
 
@@ -475,22 +509,26 @@
                         Ваш браузер не поддерживает тег video.
                     </video>
                 </div>
-                    <div class="distance-details">
-
-                        <h3>Classic Trail - 10км</h3>
-
-                        <p>Тәжірибелі жүгірушілер үшін қолайлы қашықтық. Қиындау учаскелері бар, бірақ көріністері әдемі.</p>
-
-                        <p><strong>Қиындық деңгейі:</strong> Орташа</p>
-
-                        <p><strong>Уақыт шектеуі:</strong> 3 сағат</p>
-
-                        <p><strong>Басталу уақыты:</strong> 08:30</p>
-
-                        <p><strong>Бағасы:</strong> 15 000 тг</p>
-
-
-                    </div>
+<div class="distance-details">
+    <h3>Classic Trail - 10км</h3>
+    <p>Тәжірибелі жүгірушілер үшін қолайлы қашықтық. Қиындау учаскелері бар, бірақ көріністері әдемі.</p>
+    <p><strong>Қиындық деңгейі:</strong> Орташа</p>
+    <p><strong>Уақыт шектеуі:</strong> 3 сағат</p>
+    <p><strong>Басталу уақыты:</strong> 08:30</p>
+    
+    <!-- Жаңартылған баға блогы -->
+    <div class="price-block">
+        <div class="price-header">
+            <span class="discount-badge">-10%</span>
+            <strong>Бағасы:</strong>
+        </div>
+        <div class="price-values">
+            <del class="old-price">15 000 тг</del>
+            <span class="current-price">13 500 тг</span>
+        </div>
+        <p class="promo-notice">Акция тек 10.08.2025 дейін жарамды!</p>
+    </div>
+</div>
 
                 </div>
 
@@ -566,22 +604,26 @@
                         Ваш браузер не поддерживает тег video.
                     </video>
                 </div>
-                    <div class="distance-details">
-
-                        <h3>Classic Trail Pro+ - 12км</h3>
-
-                        <p>Тәжірибелі жүгірушілер үшін қолайлы қашықтық. Қиындау учаскелері бар, бірақ көріністері әдемі.</p>
-
-                        <p><strong>Қиындық деңгейі:</strong> Орташа</p>
-
-                        <p><strong>Уақыт шектеуі:</strong> 3 сағат</p>
-
-                        <p><strong>Басталу уақыты:</strong> 08:30</p>
-                        <p><strong>Бағасы:</strong> 16 000 тг</p>
-
-
-                    </div>
-
+                 <div class="distance-details">
+    <h3>Classic Trail Pro+ - 12км</h3>
+    <p>Тәжірибелі жүгірушілер үшін қолайлы қашықтық. Қиындау учаскелері бар, бірақ көріністері әдемі.</p>
+    <p><strong>Қиындық деңгейі:</strong> Орташа</p>
+    <p><strong>Уақыт шектеуі:</strong> 3 сағат</p>
+    <p><strong>Басталу уақыты:</strong> 08:30</p>
+    
+    <!-- Жаңартылған баға блогы -->
+    <div class="price-block">
+        <div class="price-header">
+            <span class="discount-badge">-10%</span>
+            <strong>Бағасы:</strong>
+        </div>
+        <div class="price-values">
+            <del class="old-price">16 000 тг</del>
+            <span class="current-price">14 400 тг</span>
+        </div>
+        <p class="promo-notice">Акция тек 10.08.2025 дейін жарамды!</p>
+    </div>
+</div>
                 </div>
 
                 <div class="distance-prize">
@@ -659,22 +701,26 @@
                         Ваш браузер не поддерживает тег video.
                     </video>
                 </div>
-                    <div class="distance-details">
-
-                        <h3>Half Marathon Trail - 21 км</h3>
-
-                        <p>Өз күштерін шынымен сынағысы келетін дайындалған спортшыларға арналған. Тау баурайларындағы тік көтерілістер мен түсулер.</p>
-
-                        <p><strong>Қиындық деңгейі:</strong> Жоғары</p>
-
-                        <p><strong>Уақыт шектеуі:</strong> 4.5 сағат</p>
-
-                        <p><strong>Басталу уақыты:</strong> 08:00</p>
-
-                        <p><strong>Бағасы:</strong> 18 000 тг</p>
-
-
-                    </div>
+                <div class="distance-details">
+    <h3>Skyrunning Marathon Trail - 21 км</h3>
+    <p>Өз күштерін шынымен сынағысы келетін дайындалған спортшыларға арналған. Тау баурайларындағы тік көтерілістер мен түсулер.</p>
+    <p><strong>Қиындық деңгейі:</strong> Жоғары</p>
+    <p><strong>Уақыт шектеуі:</strong> 4.5 сағат</p>
+    <p><strong>Басталу уақыты:</strong> 08:00</p>
+    
+    <!-- Жаңартылған баға блогы -->
+    <div class="price-block">
+        <div class="price-header">
+            <span class="discount-badge">-10%</span>
+            <strong>Бағасы:</strong>
+        </div>
+        <div class="price-values">
+            <del class="old-price">18 000 тг</del>
+            <span class="current-price">16 200 тг</span>
+        </div>
+        <p class="promo-notice">Акция тек 10.08.2025 дейін жарамды!</p>
+    </div>
+</div>
 
                 </div>
 
@@ -753,24 +799,26 @@
                         Ваш браузер не поддерживает тег video.
                     </video>
                 </div>
-                    <div class="distance-details">
-
-                        <h3>Hikinkg - 10 км  баяу серуендеу</h3>
-
-                        <p>Табиғат аясында баяу серуендеп, тау көрінісінен ләззат алатын бағыт.</p>
-
-                      <p><strong>Қиындық деңгейі:</strong> Төмен</p>
-
-                        <p><strong>Уақыт шектеуі:</strong> Жоқ</p>
-
-                        <p><strong>Басталу уақыты:</strong> 08:30</p>
+                   <div class="distance-details">
+    <h3>Hikinkg - 10 км  баяу серуендеу</h3>
+    <p>Табиғат аясында баяу серуендеп, тау көрінісінен ләззат алатын бағыт.</p>
+    <p><strong>Қиындық деңгейі:</strong> Төмен</p>
+    <p><strong>Уақыт шектеуі:</strong> Жоқ</p>
+    <p><strong>Басталу уақыты:</strong> 08:30</p>
                          
-                        <p><strong>Бағасы:</strong> 15 000 тг</p>
-
-
-                    </div>
-
-                </div>
+    <!-- Жаңартылған баға блогы -->
+    <div class="price-block">
+        <div class="price-header">
+            <span class="discount-badge">-10%</span>
+            <strong>Бағасы:</strong>
+        </div>
+        <div class="price-values">
+            <del class="old-price">15 000 тг</del>
+            <span class="current-price">13 500 тг</span>
+        </div>
+        <p class="promo-notice">Акция тек 10.08.2025 дейін жарамды!</p>
+    </div>
+</div>
 
             
 
@@ -811,6 +859,7 @@
                     <h3>Қатысу ережелері</h3>
 
                     <p>PDF, 250 KB</p>
+                <a href="media/documents/MOUNTAIN-ereje.docx" download="Қатысу ережелері.docx" class="document-card">
 
                 </a>
 
@@ -825,6 +874,8 @@
                     <h3>Медициналық анықтама</h3>
 
                     <p>DOC, 120 KB</p>
+
+                <a href="media/documents/med_anyktama_kaz.docx" download="Қатысу ережелері.docx" class="document-card">
 
                 </a>
 
@@ -844,39 +895,14 @@
 
                     </div>
 
-                    <h3>Оферта шарты</h3>
+                    <h3>ҚАТЫСУШЫ НҰСҚАУЛЫҒЫ</h3>
 
                     <p>PDF, 350 KB</p>
+                <a href="media/documents/instruction-kaz.docx" download="ҚАТЫСУШЫ НҰСҚАУЛЫҒЫ.docx" class="document-card">
 
                 </a>
 
-                <a href="#" class="document-card">
 
-                    <div class="document-icon">
-
-                        <i class="fas fa-map-marked-alt"></i>
-
-                    </div>
-
-                    <h3>Маршрут картасы</h3>
-
-                    <p>JPG, 1.2 MB</p>
-
-                </a>
-
-                <a href="#" class="document-card">
-
-                    <div class="document-icon">
-
-                        <i class="fas fa-question-circle"></i>
-
-                    </div>
-
-                    <h3>Жиі қойылатын сұрақтар</h3>
-
-                    <p>PDF, 420 KB</p>
-
-                </a>
 
             </div>
 
@@ -998,25 +1024,19 @@
 
             <div class="kit-content">
 
-                <div class="kit-map">
-
-                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background-color:#eee;">
-
-                        [Беру пунктінің картасы]
-
-                    </div>
-
-                </div>
+               <div id="kit-pickup-map" class="kit-map">
+    <!-- Этот div должен быть пустым. Карта будет создана здесь. -->
+</div>
 
                 <div class="kit-details">
 
                     <h3>Бастапқы пакеттерді беру мекенжайы</h3>
 
-                    <p>Шымкент қаласы, Спортивная көшесі, 15 (ТРЦ "Астана")</p>
+                    <p>Ленгер қаласы Улица Толе би, 237</p>
 
-                    <p><strong>Беру күндері:</strong> 2023 жылғы 13-14 қыркүйек</p>
+                    <p><strong>Беру күндері:</strong> 17/18.10.2025</p>
 
-                    <p><strong>Жұмыс уақыты:</strong> 10:00 - 20:00</p>
+                    <p><strong>Жұмыс уақыты:</strong> 09:00 - 17:00</p>
 
                     
 
@@ -1026,17 +1046,7 @@
 
                         
 
-                        <div class="kit-item">
 
-                            <div class="kit-icon">
-
-                                <i class="fas fa-tshirt"></i>
-
-                            </div>
-
-                            <p>Марафонның фирмалық футболкасы</p>
-
-                        </div>
 
                         <div class="kit-item">
 
@@ -1116,11 +1126,10 @@
 
                     <h3 class="footer-title">Байланыстар</h3>
 
-                    <p><i class="fas fa-envelope" style="margin-right:10px;"></i> info@mountainrun.kz</p>
+                    <p><i class="fas fa-envelope" style="margin-right:10px;"></i> imangalibakytbekuly686@gmail.com</p>
 
-                    <p><i class="fas fa-phone" style="margin-right:10px;"></i> +7 777 123 45 67</p>
+                    <p><i class="fas fa-phone" style="margin-right:10px;"></i> +7 702 231 89 54</p>
 
-                    <p><i class="fas fa-map-marker-alt" style="margin-right:10px;"></i> Шымкент қаласы, Спортивная көшесі, 15</p>
 
                 </div>
 
@@ -1133,9 +1142,8 @@
             </div>
             <div class="footer-section">
                 <h3 class="footer-title">Байланыс</h3>
-                <p><i class="fas fa-envelope" style="margin-right:10px;"></i> info@mountainrun.kz</p>
-                <p><i class="fas fa-phone" style="margin-right:10px;"></i> +7 777 123 45 67</p>
-                <p><i class="fas fa-map-marker-alt" style="margin-right:10px;"></i> Шымкент қ., Спорт к-сі, 15</p>
+                <p><i class="fas fa-envelope" style="margin-right:10px;"></i> imangalibakytbekuly686@gmail.com</p>
+                <p><i class="fas fa-phone" style="margin-right:10px;"></i> +7 702 231 89 54</p>
             </div>
             <div class="footer-section">
                 <h3 class="footer-title">Әлеуметтік желілер</h3>
