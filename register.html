@@ -79,18 +79,38 @@
                             <label for="city">Қала (Город)</label>
                             <input type="text" id="city" name="city" required>
                         </div>
-                        <div class="form-group full-width">
-                            <label for="distance">Қашықтықты таңдаңыз</label>
-                            <select id="distance" name="distance" required>
-                                <option value="" data-price="0">-- Таңдау --</option>
-                                <option value="Fun Run - 5 км" data-price="12000">Fun Run - 5 км (12,000 ₸)</option>
-                                <option value="Classic Trail - 10км" data-price="15000">Classic Trail - 10км (15,000 ₸)</option>
-                                <option value="Classic Trail Pro+ - 12км" data-price="16000">Classic Trail Pro+ - 12км (16,000 ₸)</option>
-                                <option value="Half Marathon Trail - 21 км" data-price="18000">Half Marathon Trail - 21 км (18,000 ₸)</option>
-                                <option value="Hiking - 10 км" data-price="15000">Hiking - 10 км (15,000 ₸)</option>
-                            </select>
-                        </div>
+                      <div class="form-group full-width">
+    <label for="distance">Қашықтықты таңдаңыз</label>
+
+    <!-- 1. Акция туралы хабарлама блогы -->
+    <div class="promo-info-box">
+        <div class="promo-icon">
+            <i class="fas fa-tags"></i>
+        </div>
+        <div class="promo-text">
+            <b>Арнайы ұсыныс!</b> Төменде көрсетілген бағалар -10% жеңілдікпен берілген. <br>Акция тек 10.08.2025 дейін жарамды! 
+        </div>
+    </div>
+
+    <!-- 2. Жаңартылған бағалары бар тізім -->
+    <select id="distance" name="distance" required>
+        <option value="" data-price="0">-- Таңдау --</option>
+        <option value="Fun Run - 5 км" data-price="12000">Fun Run - 5 км -> 10 800 тг</option>
+        <option value="Classic Trail - 10км" data-price="15000">Classic Trail - 10км -> 13 500 тг</option>
+        <option value="Classic Trail Pro+ - 12км" data-price="16000">Classic Trail Pro+ - 12км -> 14 400 тг</option>
+        <option value="Half Marathon Trail - 21 км" data-price="18000">Skyrunning Marathon Trail - 21 км -> 16 200 тг</option>
+        <option value="Hiking - 10 км" data-price="15000">Hiking - 10 км -> 13 500 тг</option>
+    </select>
+</div>
                     </div>
+
+                    <!-- =================== ИЗМЕНЕНИЕ №1: ДОБАВЛЕН БЛОК ТРАНСФЕРА =================== -->
+<div class="form-group-checkbox" style="padding: 10px; border-radius: 5px; background-color: #f8f9fa;">
+    <input type="checkbox" id="transfer" name="transfer" data-price="3000">
+    <label for="transfer">Маған трансфер керек (алып - келу) - <strong>3,000 ₸</strong></label>
+</div>
+<!-- ============================================================================== -->
+
 
                     <h3>Қайырымдылық (По желанию)</h3>
                     <div class="charity-options">
@@ -112,14 +132,13 @@
 <div class="payment-instructions">
     <h3>2. Төлем жасау</h3>
 
-    <!-- Блок с итоговой суммой (остается на месте) -->
-    <div class="total-summary">
-        <p>Қашықтық: <span id="summary-distance-price">0 ₸</span></p>
-        <p>Қайырымдылық: <span id="summary-charity-price">0 ₸</span></p>
-        <hr>
-        <p class="total-amount">Жалпы сома: <strong id="summary-total-price">0 ₸</strong></p>
-    </div>
-    
+  <div class="total-summary">
+    <p>Қашықтық: <span id="summary-distance-price">0 ₸</span></p>
+    <p>Трансфер: <span id="summary-transfer-price">0 ₸</span></p> <!-- Новая строка -->
+    <p>Қайырымдылық: <span id="summary-charity-price">0 ₸</span></p>
+    <hr>
+    <p class="total-amount">Жалпы сома: <strong id="summary-total-price">0 ₸</strong></p>
+</div>
     <!-- =================== ИЗМЕНЕНИЕ ЗДЕСЬ =================== -->
     <!-- Блок с текстом для копирования ПЕРЕМЕЩЕН СЮДА (сразу после итоговой суммы) -->
     <div class="copy-details">
@@ -133,8 +152,10 @@
     <!-- Блок с QR и ссылкой на оплату (теперь идет после блока копирования) -->
     <div class="payment-details">
         <p>Төмендегі QR код арқылы немесе Kaspi Pay-ге өтіп, көрсетілген соманы дәлме-дәл төлеңіз.</p>
-        <img src="https://s.iimg.su/s/02/M3Qd6z7F0M4B0g29yXlYx5zC0nJgYmB8m1f3v9gH.png" alt="Kaspi QR Code" class="qr-code">
-        <a href="https://pay.kaspi.kz/pay/aelcmo5f" target="_blank" class="btn kaspi-link">Kaspi Pay арқылы төлеу</a>
+        <img src="media/img/qr-code-kaspi.jpeg" alt="Kaspi QR Code" class="qr-code">
+      <a href="https://pay.kaspi.kz/pay/aelcmo5f" target="_blank" class="btn kaspi-link">
+    <img src="media/img/icon-kaspi.png" alt="Иконка Kaspi Pay" class="btn-icon"> Kaspi арқылы төлеу
+</a>
     </div>
           
 
@@ -172,9 +193,8 @@
             </div>
             <div class="footer-section">
                 <h3 class="footer-title">Байланыс</h3>
-                <p><i class="fas fa-envelope" style="margin-right:10px;"></i> info@mountainrun.kz</p>
-                <p><i class="fas fa-phone" style="margin-right:10px;"></i> +7 777 123 45 67</p>
-                <p><i class="fas fa-map-marker-alt" style="margin-right:10px;"></i> Шымкент қ., Спорт к-сі, 15</p>
+                <p><i class="fas fa-envelope" style="margin-right:10px;"></i> imangalibakytbekuly686@gmail.com</p>
+                <p><i class="fas fa-phone" style="margin-right:10px;"></i> +7 702 231 8954</p>
             </div>
             <div class="footer-section">
                 <h3 class="footer-title">Әлеуметтік желілер</h3>
@@ -199,7 +219,7 @@
 <!-- Скрипт для мобильного меню (можно взять с главной) -->
 <script src="script.js"></script> 
 <!-- ОТДЕЛЬНЫЙ скрипт для логики формы регистрации -->
-<script src="register.js"></script>
+<script src="register.js?v=1.2"></script>
 
 </body>
 </html>
